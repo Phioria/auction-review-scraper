@@ -11,10 +11,10 @@ import time
 def scrape_reviews(company, code):
 	if not isinstance(company, str):
 		raise TypeError("Argument `company` expects a string")
-	# Technically, companyCode should be a string representation of a number.
+	# Technically, code should be a string representation of a number.
 	# We'll just pass it in as a string so there's no need to cast
 	if not isinstance(code, str):
-		raise TypeError("Argument `companyCode` expects a string")
+		raise TypeError("Argument `code` expects a string")
 	
 	driver = selenium_init()
 	reviews = scrape_liveauctioneers(company=company, code=code, driver=driver)
@@ -31,13 +31,6 @@ def selenium_init():
 	return driver
 
 def scrape_liveauctioneers(company, code, driver):
-	if not isinstance(company, str):
-		raise TypeError("Argument `company` expects a string")
-	# Technically, companyCode should be a string representation of a number.
-	# We'll just pass it in as a string so there's no need to cast
-	if not isinstance(code, str):
-		raise TypeError("Argument `companyCode` expects a string")
-	
 	BASEURL = "https://www.liveauctioneers.com/auctioneer"
 	TARGET_URL = f"{BASEURL}/{code}/{company}/reviews"
 
